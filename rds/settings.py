@@ -122,11 +122,11 @@ WSGI_APPLICATION = 'rds.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DATABASE_NAME', default=os.path.join(BASE_DIR, 'db.sqlite3')),
-        'USER': config('DATABASE_USER'),
-        'PASSWORD': config('DATABASE_PASSWORD'),
-        'HOST': config('DATABASE_HOST'),
-        'PORT': config('DATABASE_PORT'),
+        'NAME': config('RDS_DB_NAME', default=os.path.join(BASE_DIR, 'db.sqlite3')),
+        'USER': config('RDS_DB_USER'),
+        'PASSWORD': config('RDS_DB_PASSWORD'),
+        'HOST': config('RDS_DB_HOST'),
+        'PORT': config('RDS_DB_PORT'),
     }
 }
 
