@@ -32,7 +32,12 @@ ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default=[], cast=Csv())
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default=[], cast=Csv())
-CORS_ALLOWED_ORIGIN_REGEXES = config('CORS_ALLOWED_ORIGIN_REGEXES', default=[], cast=Csv())
+if '*' in CORS_ALLOWED_ORIGINS:
+    CORS_ALLOW_ALL_ORIGINS = True
+    CORS_ALLOWED_ORIGINS = []
+else:
+    CORS_ALLOW_ALL_ORIGINS = False
+    CORS_ALLOWED_ORIGIN_REGEXES = config('CORS_ALLOWED_ORIGIN_REGEXES', default=[], cast=Csv())
 
 INTERNAL_IPS = config('DJANGO_INTERNAL_IPS', default=[], cast=Csv())
 if DEBUG:
